@@ -20,7 +20,7 @@ local R = Random.new()
 ]]
 
 return {
-	Header = "zero vector3 benchmarking!";
+	Header = "";
 	SortBy = "Server";
 	Size = 10000;
 	P = 95;

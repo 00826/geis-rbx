@@ -65,4 +65,4 @@ commented-out of the `.Work` array is a work-table template with fields `Name` a
 
 ... will yield the following result:
 
-<video src="./example-result.mp4" width="800">
+[<img src="https://img.youtube.com/vi/wDCb_yKXyqc/maxresdefault.jpg" width="50%">](https://youtu.be/wDCb_yKXyqc)

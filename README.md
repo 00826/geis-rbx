@@ -65,5 +65,4 @@ commented-out of the `.Work` array is a work-table template with fields `Name` a
 
 ... will yield the following result:
 
-https://github.com/00826/geis-rbx/assets/61893206/882549ad-d1cc-4b0e-b9ad-dcd47c4b93b7
-
+https://github.com/00826/geis-rbx/assets/61893206/4eabee45-1a5e-420c-9113-c9c2152e5b27

@@ -49,7 +49,7 @@ commented-out of the `.Work` array is a work-table template with fields `Name` a
 		{
 			Name = "Vector3.new(0, 0, 0)";
 			F = function()
-				return Vector3.zero
+				return Vector3.new(0, 0, 0)
 			end;
 		};
 		{

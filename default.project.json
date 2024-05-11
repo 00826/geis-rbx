@@ -1,0 +1,69 @@
+{
+	"name": "geis-rbx",
+	"servePlaceIds": [17449910945],
+	"tree": {
+		"$className": "DataModel",
+
+		"HttpService": {
+			"$className": "HttpService",
+			"$properties": {
+				"HttpEnabled": true
+			}
+		},
+		"MaterialService": {
+			"$className": "MaterialService",
+			"$properties": {
+				"Use2022Materials": false
+			}
+		},
+		"Workspace": {
+			"$className": "Workspace",
+			"$ignoreUnknownInstances": true,
+			"$properties": {
+				"StreamingEnabled": false
+			}
+		},
+		"StarterGui": {
+			"$className": "StarterGui",
+			"$ignoreUnknownInstances": true,
+			"Geis": {
+				"$className": "ScreenGui",
+				"$ignoreUnknownInstances": true,
+				"Jobs": {"$path": "src/Jobs"}
+			}
+		},
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"$ignoreUnknownInstances": false,
+			"Setter": {"$path": "src/Setter.server.luau"}
+		},
+		"ReplicatedFirst": {
+			"$className": "ReplicatedFirst",
+			"$ignoreUnknownInstances": true,
+			"CoreGuiDisable": {"$path": "src/CoreGuiDisable.client.luau"}
+		},
+		"Players": {
+			"$className": "Players",
+			"$properties": {
+				"CharacterAutoLoads": false
+			}
+		},
+		"StarterPlayer": {
+			"$className": "StarterPlayer",
+			"StarterPlayerScripts": {
+				"$className": "StarterPlayerScripts",
+				"PlayerModule": {
+					"$className": "ModuleScript"
+				},
+				"RbxCharacterSounds": {
+					"$className": "LocalScript",
+					"$properties": { "Enabled": false }
+				},
+				"PlayerScriptsLoader": {
+					"$className": "LocalScript",
+					"$properties": { "Enabled": false }
+				}
+			}
+		}
+	}
+}

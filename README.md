@@ -65,4 +65,5 @@ commented-out of the `.Work` array is a work-table template with fields `Name` a
 
 ... will yield the following result:
 
-[<img src="https://img.youtube.com/vi/wDCb_yKXyqc/maxresdefault.jpg" width="50%">](https://youtu.be/wDCb_yKXyqc)
+https://github.com/00826/geis-rbx/assets/61893206/882549ad-d1cc-4b0e-b9ad-dcd47c4b93b7
+

@@ -44,7 +44,7 @@ within the Studio place is a `Toolbox` folder `(game/ReplicatedStorage/Toolbox)`
 
 ## example usage & result
 
-[![99 ways to vector3 0 0 0](https://img.youtube.com/vi/ZmILBqEvalw/0.jpg)](https://www.youtube.com/watch?v=ZmILBqEvalw)
+https://github.com/00826/geis-rbx/assets/61893206/df575758-229c-4002-a0f4-9cb8ecb89cae
 
 > [!WARNING]
 > because work functions are bound to `RunService.RenderStep`, benchmarking will only work in Play (F5) mode

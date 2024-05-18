@@ -17,7 +17,7 @@ export type JobTable = {
 }
 
 return {
-	Header			= "99 ways to Vector3(0, 0, 0)";
+	Header			= "";
 
 	Work			= {
 

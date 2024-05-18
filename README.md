@@ -12,7 +12,7 @@ geis-rbx is a standalone repository used in the open-source Roblox place: https:
 geis-rbx uses **[Jobs.luau](./src/Jobs/init.luau)**, a single-table interface for simplicity and fast benchmarking, and is outlined by the `JobTable` luau type:
 
 ```lua
---- game/StarterGui/Geis/Jobs
+--game/StarterGui/Geis/Jobs
 
 export type JobTable = {
 	Header: string; -- histogram header
@@ -50,7 +50,7 @@ https://github.com/00826/geis-rbx/assets/61893206/df575758-229c-4002-a0f4-9cb8ec
 > because work functions are bound to `RunService.RenderStep`, benchmarking will only work in Play (F5) mode
 
 ```lua
----a JobTable benchmarking different ways to arrive at Vector3 (0, 0, 0)
+--a JobTable benchmarking different ways to arrive at Vector3 (0, 0, 0)
 {
 	Header			= "99 ways to Vector3(0, 0, 0)";
 

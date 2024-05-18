@@ -29,7 +29,10 @@
 			"Geis": {
 				"$className": "ScreenGui",
 				"$ignoreUnknownInstances": true,
-				"Jobs": {"$path": "src/Jobs"}
+				"Jobs": {"$path": "src/Jobs"},
+				"$properties": {
+					"IgnoreGuiInset": true
+				}
 			}
 		},
 		"ServerScriptService": {

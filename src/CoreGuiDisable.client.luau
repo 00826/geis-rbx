@@ -1,5 +1,3 @@
---!strict
-
 local SGUI = game:GetService("StarterGui")
 
 local S; repeat

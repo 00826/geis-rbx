@@ -5,64 +5,68 @@
 
 geis-rbx is a standalone repository used in the open-source Roblox place: https://www.roblox.com/games/17449910945/
 
-the linked game is a sandboxed version of the default "Baseplate" place, stripped of unnecessary instances and settings that might skew benchmark results during runtime.
-
 ---
 
-## about geis:
+## about
 
-the **[Jobs.luau](./src/Jobs/init.luau)** file is the table-interface which serves as a blank slate to interact with the benchmarking timer, and uses the `JobTable` luau type:
+geis-rbx uses **[Jobs.luau](./src/Jobs/init.luau)**, a single-table interface for simplicity and fast benchmarking, and is outlined by the `JobTable` luau type:
 
 ```lua
+--- game/StarterGui/Geis/Jobs
+
 export type JobTable = {
-	Header: string; -- display header of job
-	SortBy: ("Server"|"ServerP"|"Client"|"ClientP")?; -- sort by speed in ascending order (default: "Server")
-	Size: number; -- size of times to sample from
-	P: number; -- latency-time constant, usually 90, 95, or 99
-	Work: { { Name: string, F: () -> () } }; -- array of work-tables to benchmark
+	Header: string; -- histogram header
+	Work: { [string]: () -> () }; -- table of functions to benchmark {[Name]: fn}
+	RefreshRate: number; -- histogram refresh rate
+	Cycles: number; -- # of data points to draw the histogram
 }
 ```
 
-... within the Roblox place there is a `Toolbox` folder, which by default contains a `BasePart`, an `R6` rig and an `R15` rig for convenience, and is meant to house developer-made instances for easy referencing/access should any benchmark require them
+the linked game is a sandboxed version of the default Baseplate, stripped of unnecessary instances, default scripts, and settings that might skew benchmark results during runtime
 
-benchmark results are timed using `os.clock()` and are represented as microseconds (μs)
+within the Studio place is a `Toolbox` folder `(game/ReplicatedStorage/Toolbox)`, which is meant to house developer-made instances for easy referencing/access should any benchmark require them
+
+- by default, the Toolbox contains a `BasePart` and `R6`/`R15` rigs
 
 ---
 
-## using geis:
+## benchmarking
 
-commented-out of the `.Work` array is a work-table template with fields `Name` and `F`. `Name` is a string that describes the name of field `F` which is the function `() -> ()` that you want to benchmark. for example, the below `Jobs` table, which benchmarks the various ways to represent a zero-magnitude `Vector3`:
+- functions are timed using `os.clock()` every `RunService.RenderStep`
+- times are stored in a first-in, first-out queue
+<br><br>
+- results are represented as a histogram, partitioned by percentiles of 10
+- histogram intervals are represented in microseconds (μs)
+- the x-bounds of the histogram are defined as `[0, max(functionTimes)]`
+- the y-bounds of the histogram are defined as `[0, max(functionFrequencies)]`
+
+---
+
+## example usage & result
+
+[![99 ways to vector3 0 0 0](https://img.youtube.com/vi/ZmILBqEvalw/0.jpg)](https://www.youtube.com/watch?v=ZmILBqEvalw)
+
+> [!WARNING]
+> because work functions are bound to `RunService.RenderStep`, benchmarking will only work in Play (F5) mode
+
 ```lua
+---a JobTable benchmarking different ways to arrive at Vector3 (0, 0, 0)
 {
-	Header = "zero vector3 benchmarking!";
-	SortBy = "Server";
-	Size = 10000;
-	P = 95;
+	Header			= "99 ways to Vector3(0, 0, 0)";
 
-	Work = {
-		{
-			Name = "Vector3.zero";
-			F = function()
-				return Vector3.zero
-			end;
-		};
-		{
-			Name = "Vector3.new(0, 0, 0)";
-			F = function()
-				return Vector3.new(0, 0, 0)
-			end;
-		};
-		{
-			Name = "Vector3.one - Vector3.one";
-			F = function()
-				return Vector3.one - Vector3.one
-			end;
-		};
+	Work			= {
+		["Vector3.zero"] = function()
+			return Vector3.zero
+		end;
+		["Vector3.new(0, 0, 0)"] = function()
+			return Vector3.new(0, 0, 0)
+		end;
+		["Vector3.one - Vector3.one"] = function()
+			return Vector3.one - Vector3.one
+		end;
 	};
+
+	RefreshRate		= 1 / 15;
+	Cycles			= 5000;
 }
 ```
-> [ ! ] work-table names that contain capture pattern `"%d"` may not work nicely with the :gsub() call used to display benchmark results
-
-... will yield the following result:
-
-https://github.com/00826/geis-rbx/assets/61893206/4eabee45-1a5e-420c-9113-c9c2152e5b27

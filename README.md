@@ -6,7 +6,7 @@ a benchmarking tool that won't run you a wendys biggie bag
 
 |ico.png|lore|
 |-|-|
-| <img src="./icon.png" width="96"> |"oh, to optimize things that don't really need to be optimized"<br/><br/>"geis" is an idiosyncratic taboo, whether of obligation or prohibition, similar to being under a vow or curse, yet the observance of which can also bring power and blessings.|
+| <img src="./icon.png" width="96"> |"to optimize things that don't really need to be optimized"<br/><br/>*geis* is an idiosyncratic taboo, whether of obligation or prohibition, similar to being under a vow or curse, yet the observance of which can also bring power and blessings.|
 
 ## interfacing
 
@@ -28,10 +28,6 @@ type params = {
 results are presented as plain text to keep things simple and portable
 
 ```lua
---- geis.client.luau
-
---!strict
-
 --- workspace:QueryDescendants(), workspace:GetChildren() vs 1000 folders
 
 print(geis.receipt(geis.run( { ... } )))

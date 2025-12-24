@@ -25,7 +25,7 @@ type params = {
 
 ## usage
 
-results are presented as plain text to keep things simple and portable
+results are presented as plain text for portability
 
 ```lua
 --- workspace:QueryDescendants(), workspace:GetChildren() vs 1000 folders
